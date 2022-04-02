@@ -1,14 +1,18 @@
 package com.example.project400.employee;
 
+import com.example.project400.model.Employee;
+import com.example.project400.model.ScheduledShift;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/employee")
-@CrossOrigin(origins = "http://webhostingproject400.s3-website-eu-west-1.amazonaws.com")
+@CrossOrigin(origins = "*")
 public class EmployeeController {
 
     /*Dependency Injection*/
@@ -24,10 +28,14 @@ public class EmployeeController {
     public ResponseEntity<String> health(){
         return ResponseEntity.ok("Spring Boot App running on AWS EC2 Instance");
     }
+
     @GetMapping
     public List<Employee> getEmployees() {
         return employeeService.getEmployees();
     }
+
+    @GetMapping(path = "{employeeId}")
+    public Optional<Employee> getEmployeeById(@PathVariable("employeeId") Long id){ return employeeService.getEmployeeById(id);}
 
     @PostMapping
     public void registerNewEmployee(@RequestBody Employee employee){

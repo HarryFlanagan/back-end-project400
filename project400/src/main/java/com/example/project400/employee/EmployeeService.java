@@ -1,5 +1,7 @@
 package com.example.project400.employee;
 
+import com.example.project400.model.Employee;
+import com.example.project400.model.ScheduledShift;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ public class EmployeeService {
 
     @Autowired
     public EmployeeService(EmployeeRepository employeeRepository) {
+
         this.employeeRepository = employeeRepository;
     }
 
@@ -22,12 +25,21 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
+    public Optional<Employee> getEmployeeById (Long employeeId) {
+        boolean employeeExists = employeeRepository.existsById(employeeId);
+        if (!employeeExists){
+            throw new IllegalStateException("Employee with id " + employeeId + " does not exist");
+        }
+        return employeeRepository.findById(employeeId);
+    }
+
     public void addNewEmployee(Employee employee) {
         Optional<Employee> employeeOptional =
         employeeRepository.findEmployeeByEmail(employee.getEmail());
         if(employeeOptional.isPresent()){
             throw new IllegalStateException("email taken");
         }
+        System.out.println(employee);
         employeeRepository.save(employee);
     }
 
