@@ -1,10 +1,13 @@
 package com.example.project400.employee;
 
+import com.example.project400.cloud.AmazonClient;
 import com.example.project400.model.Employee;
 import com.example.project400.model.ScheduledShift;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.swing.text.html.Option;
 import java.util.List;

@@ -1,0 +1,5 @@
+amazonProperties:
+  endpointUrl: https://s3.eu-west-1.amazonaws.com
+  accessKey: AKIAQZE4K4CGZ2UOMTGK
+  secretKey: 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
+  bucketName: s00189591
