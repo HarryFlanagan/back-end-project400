@@ -9,6 +9,7 @@ import com.example.project400.shift.ShiftRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -20,42 +21,42 @@ public class PRJ400Config {
     @Bean
     CommandLineRunner commandLineRunner(EmployeeRepository employeeRepository, ShiftRepository shiftRepository, ScheduledShiftRepository scheduledShiftRepository) {
         return args -> {
-            Employee shaina = new Employee(
-                    "Shaina",
-                    "McGovern",
-                    "shaina@mail.com",
-                    "0871126409",
-                    LocalDate.of(1994, Month.JUNE, 24),
-                    11.50,
-                    false)
-            ;
-            Employee harry = new Employee(
-                    "Harry",
-                    "Flanagan",
-                    "harry@mail.com",
-                    "0871126409",
-                    LocalDate.of(1997, Month.JUNE, 30),
-                    15.50,
-                    true);
-            Employee rich = new Employee(
-                    "Richard",
-                    "Doherty",
-                    "rich@mail.com",
-                    "0871126444",
-                    LocalDate.of(1991, Month.NOVEMBER, 26),
-                    12.50,
-                    true);
-            Employee karen = new Employee(
-                    "Karen",
-                    "O'Dowd",
-                    "karen@mail.com",
-                    "0834564409",
-                    LocalDate.of(1994, Month.APRIL, 2),
-                    10.50,
-                    false);
-            employeeRepository.saveAll(
-                    List.of(shaina, harry, rich, karen)
-            );
+//            Employee shaina = new Employee(
+//                    "Shaina",
+//                    "McGovern",
+//                    "shaina@mail.com",
+//                    "0871126409",
+//                    LocalDate.of(1994, Month.JUNE, 24),
+//                    11.50,
+//                    false)
+//            ;
+//            Employee harry = new Employee(
+//                    "Harry",
+//                    "Flanagan",
+//                    "harry@mail.com",
+//                    "0871126409",
+//                    LocalDate.of(1997, Month.JUNE, 30),
+//                    15.50,
+//                    true);
+//            Employee rich = new Employee(
+//                    "Richard",
+//                    "Doherty",
+//                    "rich@mail.com",
+//                    "0871126444",
+//                    LocalDate.of(1991, Month.NOVEMBER, 26),
+//                    12.50,
+//                    true);
+//            Employee karen = new Employee(
+//                    "Karen",
+//                    "O'Dowd",
+//                    "karen@mail.com",
+//                    "0834564409",
+//                    LocalDate.of(1994, Month.APRIL, 2),
+//                    10.50,
+//                    false);
+//            employeeRepository.saveAll(
+//                    List.of(shaina, harry, rich, karen)
+//            );
             Shift mondayMorning = new Shift("Monday", "Morning");
             Shift mondayDay = new Shift("Monday", "Day");
             Shift mondayNight = new Shift("Monday", "Night");
@@ -100,9 +101,9 @@ public class PRJ400Config {
                             sundayDay,
                             sundayNight)
             );
-            ScheduledShift scheduledShift1 = new ScheduledShift(harry,mondayDay);
-            scheduledShiftRepository.saveAll(
-                    List.of(scheduledShift1));
+//            ScheduledShift scheduledShift1 = new ScheduledShift(harry,mondayDay);
+//            scheduledShiftRepository.saveAll(
+//                    List.of(scheduledShift1));
         };
     }
 }

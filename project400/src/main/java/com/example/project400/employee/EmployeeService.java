@@ -16,10 +16,8 @@ public class EmployeeService {
 
     @Autowired
     public EmployeeService(EmployeeRepository employeeRepository) {
-
         this.employeeRepository = employeeRepository;
     }
-
 
     public List<Employee> getEmployees() {
         return employeeRepository.findAll();
@@ -34,17 +32,12 @@ public class EmployeeService {
     }
 
     public void addNewEmployee(Employee employee) {
-        Optional<Employee> employeeOptional =
-        employeeRepository.findEmployeeByEmail(employee.getEmail());
-        if(employeeOptional.isPresent()){
-            throw new IllegalStateException("email taken");
-        }
         System.out.println(employee);
         employeeRepository.save(employee);
     }
 
     public void deleteEmployee(Long employeeId) {
-               boolean employeeExists = employeeRepository.existsById(employeeId);
+               Boolean employeeExists = employeeRepository.existsById(employeeId);
                if (!employeeExists){
                    throw new IllegalStateException("Employee with id " + employeeId + " does not exist");
                }
